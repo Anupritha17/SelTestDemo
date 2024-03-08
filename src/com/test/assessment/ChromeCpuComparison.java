@@ -49,8 +49,6 @@ public class ChromeCpuComparison {
 		wb.close();
 	}
 
-	// Retrieve Chrome CPU value from table
-	// Retrieve Chrome CPU value from the highlighted section below table
 	public static void getXpathValuesFromExcel() {
 		System.out.println(util.GetText(value.get("tableCell")));
 		System.out.println(util.GetText(value.get("highlightedCell")).replace("Chrome CPU: ", "").trim());
@@ -59,14 +57,11 @@ public class ChromeCpuComparison {
 	public static void CompareBothValues() {
 		String tableCellValue = util.GetText(value.get("tableCell"));
 		String highlightedCellValue = util.GetText(value.get("highlightedCell")).replace("Chrome CPU:", "").trim();
-		// Check whether both values are the same
 		Assert.assertEquals(tableCellValue, highlightedCellValue, "The CPU Load values are different");
 	}
 
-	// Close the browser
 	@AfterMethod
 	public static void closeWindow() {
-		// browser is closed after each test method execution
 		driver.quit();
 	}
 

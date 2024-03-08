@@ -25,9 +25,6 @@ public class scan {
 		for (Row row : sheet1) {
 			if (row.getCell(0).toString().equals(EmpID)) {
 				for (Cell cell : row) {
-					DataFormatter fmt = new DataFormatter();
-					CellReference cr = new CellReference(cell);
-					System.out.println("Cell " + cr.formatAsString() + " is " + fmt.formatCellValue(cell));
 					switch (cell.getCellType()) {
 					case STRING:
 						System.out.print(cell.getStringCellValue());

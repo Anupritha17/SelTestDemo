@@ -48,7 +48,7 @@ public class Hotel {
 		driver.quit();
 	}
 
-	private static WebDriver OpenApplication() {
+	private static  WebDriver OpenApplication() {
 		System.setProperty("WebDriver.chrome.driver", "C:/Users/AJOHNMAR/Downloads/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));

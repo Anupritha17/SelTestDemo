@@ -1,0 +1,21 @@
+{
+	"skipsigninButton":"//a[@href='Register.html']",
+	"firstnamexpath":"//input[@placeholder='First Name']",
+	"firstname":"Anu",
+	"lastnamexpath":"//input[@placeholder='Last Name']",
+	"lastname":"Pritha",
+	"genderxpath":"//input[@value='FeMale']",
+	"hobby1":"//input[@value='Cricket']",
+	"hobby2":"//input[@value='Movies']",
+	
+	"yearxpath":"//select[@id='yearbox']",
+	"yearSelect":"//option[@value='1999']",
+	
+	"monthxpath":"//select[@placeholder='Month']",
+	"monthvalue":"//option[@value='April']",
+	
+	"dayxpath":"//select[@id='daybox']",
+	"dayvalue":"//option[@value='17']",
+	
+	"usersubmit":"//button[@type='submit']"
+}

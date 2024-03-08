@@ -15,7 +15,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-public class ChromeCpuComp {
+public class ChromeCpuComparison {
 	static WebDriver driver;
 	static DriverUtilsTest util;
 	static Map<String, String> value = new HashMap<>();

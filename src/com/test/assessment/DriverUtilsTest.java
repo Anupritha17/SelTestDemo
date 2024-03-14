@@ -1,18 +1,18 @@
 package com.test.assessment;
 
 import java.time.Duration;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DriverUtilsTest {
-	private WebDriver driver;
+	private static WebDriver driver;
 
 	public DriverUtilsTest(WebDriver driver) {
-		this.driver = driver;
+		DriverUtilsTest.driver = driver;
 	}
 
 	public void Click(String xpath) {
@@ -45,4 +45,15 @@ public class DriverUtilsTest {
 		return driver.findElement(by).getText();
 	}
 
+	public void OpenApplication(String url) {
+		System.setProperty("webdriver.chrome.driver", "C:/Users/AJOHNMAR/Downloads/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
+		driver.get(url);
+	}
+
+	public void closeWindow() {
+		driver.quit();
+	}
 }

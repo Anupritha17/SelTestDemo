@@ -3,12 +3,10 @@ package com.test.assessment;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.Duration;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
@@ -17,24 +15,22 @@ public class RegisterUserFlow {
 	private static DriverUtilsTest util;
 
 	public static void openApplication() {
-		driver = new ChromeDriver();
 		util = new DriverUtilsTest(driver);
-		System.setProperty("WebDriver.chrome.driver", "C:/Users/AJOHNMAR/Downloads/chromedriver.exe");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		driver.manage().window().maximize();
-		driver.get("https://demo.automationtesting.in/Index.html");
+		util.OpenApplication("https://demo.automationtesting.in/Index.html");
 	}
 
 	@Test
-	public static void main(String args[]) throws FileNotFoundException, IOException, ParseException {
+	public static void test() throws FileNotFoundException, IOException, ParseException {
 		openApplication();
 		accessJson();
+		closeApplication();
 	}
 
 	public static void accessJson() throws FileNotFoundException, IOException, ParseException {
-
 		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObj = (JSONObject) jsonParser.parse(new FileReader("C:/Users/AJOHNMAR/NewNTest/Seleproject/json/assessment.json"));
+		JSONObject jsonObj = (JSONObject) jsonParser
+				.parse(new FileReader("C:/Users/AJOHNMAR/NewNTest/Seleproject/json/assessment.json"));
+
 		String clickBtn = (String) jsonObj.get("skipsigninButton");
 		String dayXpath = (String) jsonObj.get("dayxpath");
 		String dayValue = (String) jsonObj.get("dayvalue");
@@ -51,7 +47,6 @@ public class RegisterUserFlow {
 		String yearValue = (String) jsonObj.get("yearxpath");
 		String yearDropDown = (String) jsonObj.get("yearSelect");
 
-		// Validate whether the fields are not empty
 		if (clickBtn != null && genderBtn != null && hobbyBtn != null && hobbiesBtn != null && userSubmitBtn != null
 				&& yearValue != null && yearDropDown != null && monthXpath != null && monthValue != null
 				&& dayXpath != null && dayValue != null && firstName != null && firstNameValue != null
@@ -62,11 +57,12 @@ public class RegisterUserFlow {
 		} else {
 			System.out.println("Some required fields are missing.");
 		}
+
 	}
 
 	public static void performClickOperations(String clickBtn, String genderBtn, String hobbyBtn, String hobbiesBtn,
-		String userSubmitBtn, String yearValue, String yearDropDown, String monthXpath, String monthValue,
-		String dayXpath, String dayValue) {
+			String userSubmitBtn, String yearValue, String yearDropDown, String monthXpath, String monthValue,
+			String dayXpath, String dayValue) {
 		util.Click(clickBtn);
 		util.Click(genderBtn);
 		util.Click(hobbyBtn);
@@ -82,15 +78,15 @@ public class RegisterUserFlow {
 	}
 
 	public static void performSendKeysOperations(String firstName, String firstNameValue, String lastName,
-	    String lastNameValue, String userSubmitBtn) {
+			String lastNameValue, String userSubmitBtn) {
 		util.Sendkeys(firstName, firstNameValue);
 		util.Sendkeys(lastName, lastNameValue);
 		util.Click(userSubmitBtn);
 	}
 
 	@AfterMethod
-	public static void closeWindow() {
-		driver.quit();
+	public static void closeApplication() {
+		util.closeWindow();
 	}
 
 }
